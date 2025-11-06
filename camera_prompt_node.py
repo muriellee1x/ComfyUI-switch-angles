@@ -26,11 +26,13 @@ class CameraPromptGenerator:
                     "default": 0.0,
                     "min": -1.0,
                     "max": 1.0,
-                    "step": 0.1,
+                    "step": 1,
                     "display": "slider"
                 }),
                 "wideangle": ("BOOLEAN", {
-                    "default": False
+                    "default": False,
+                    "label_on": "enabled",
+                    "label_off": "disabled"
                 })
             }
         }
