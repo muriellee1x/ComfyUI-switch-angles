@@ -8,28 +8,28 @@ class CameraPromptGenerator:
     def INPUT_TYPES(cls):
         return {
             "required": {
-                "rotate_deg": ("INT", {
+                "Rotate Right-Left (°)": ("INT", {
                     "default": 0,
                     "min": -90,
                     "max": 90,
                     "step": 1,
                     "display": "slider"
                 }),
-                "move_forward": ("INT", {
+                "Move Forward → Close-Up": ("INT", {
                     "default": 0,
                     "min": 0,
                     "max": 10,
                     "step": 1,
                     "display": "slider"
                 }),
-                "vertical_tilt": ("FLOAT", {
+                "Vertical Angle (Bird ↔ Worm)": ("FLOAT", {
                     "default": 0.0,
                     "min": -1.0,
                     "max": 1.0,
                     "step": 1,
                     "display": "slider"
                 }),
-                "wideangle": ("BOOLEAN", {
+                "Wide-Angle Lens": ("BOOLEAN", {
                     "default": False,
                     "label_on": "enabled",
                     "label_off": "disabled"
