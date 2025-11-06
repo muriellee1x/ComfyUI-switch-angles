@@ -29,7 +29,7 @@ class CameraPromptGenerator:
                     "step": 1,
                     "display": "slider"
                 }),
-                "Wide_Angle_Lens": ("BOOLEAN", {
+                "WideAngle_Lens": ("BOOLEAN", {
                     "default": False,
                     "label_on": "enabled",
                     "label_off": "disabled"
@@ -42,34 +42,34 @@ class CameraPromptGenerator:
     FUNCTION = "generate_prompt"
     CATEGORY = "camera/prompt"
     
-    def generate_prompt(self, rotate_deg, move_forward, vertical_tilt, wideangle):
+    def generate_prompt(self, Rotate_Right_to_Left, Move_Forward_to_Close_Up, Bird_View_to_Worm_View, WideAngle_Lens):
         """
         生成相机提示词
         """
         prompt_parts = []
         
         # Rotation
-        if rotate_deg != 0:
-            direction = "left" if rotate_deg > 0 else "right"
+        if Rotate_Right_to_Left != 0:
+            direction = "left" if Rotate_Right_to_Left > 0 else "right"
             if direction == "left":
-                prompt_parts.append(f"将镜头向左旋转{abs(rotate_deg)}度 Rotate the camera {abs(rotate_deg)} degrees to the left.")
+                prompt_parts.append(f"将镜头向左旋转{abs(Rotate_Right_to_Left)}度 Rotate the camera {abs(Rotate_Right_to_Left)} degrees to the left.")
             else:
-                prompt_parts.append(f"将镜头向右旋转{abs(rotate_deg)}度 Rotate the camera {abs(rotate_deg)} degrees to the right.")
+                prompt_parts.append(f"将镜头向右旋转{abs(Rotate_Right_to_Left)}度 Rotate the camera {abs(Rotate_Right_to_Left)} degrees to the right.")
         
         # Move forward / close-up
-        if move_forward > 5:
+        if Move_Forward_to_Close_Up > 5:
             prompt_parts.append("将镜头转为特写镜头 Turn the camera to a close-up.")
-        elif move_forward >= 1:
+        elif Move_Forward_to_Close_Up >= 1:
             prompt_parts.append("将镜头向前移动 Move the camera forward.")
         
         # Vertical tilt
-        if vertical_tilt <= -1:
+        if Bird_View_to_Worm_View <= -1:
             prompt_parts.append("将相机转向鸟瞰视角 Turn the camera to a bird's-eye view.")
-        elif vertical_tilt >= 1:
+        elif Bird_View_to_Worm_View >= 1:
             prompt_parts.append("将相机切换到仰视视角 Turn the camera to a worm's-eye view.")
         
         # Lens option
-        if wideangle:
+        if WideAngle_Lens:
             prompt_parts.append(" 将镜头转为广角镜头 Turn the camera to a wide-angle lens.")
         
         final_prompt = " ".join(prompt_parts).strip()
